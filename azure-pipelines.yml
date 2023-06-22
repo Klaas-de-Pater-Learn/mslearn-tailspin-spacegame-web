@@ -15,10 +15,6 @@ steps:
   inputs:
     version: '$(dotnetSdkVersion)'
 
-- task: NuGetToolInstaller@0
-  inputs:
-    versionSpec: '5.9.1'
-
 - task: Npm@1
   displayName: 'Run npm install'
   inputs:
@@ -34,13 +30,13 @@ steps:
   displayName: 'Write build info'
   workingDirectory: $(wwwrootDir)
 
-- task: NuGetCommand@2
+- task: DotNetCoreCLI@2
   displayName: 'Restore project dependencies'
   inputs:
     command: 'restore'
-    restoreSolution: '**/*.sln'
-    feedsToUse: 'select'
-    vstsFeed: '$(System.TeamProject)/Tailspin.SpaceGame.Web.Models.2023'
+    feedsToUse: select
+    feedRestore: '$(System.TeamProject)/Tailspin.SpaceGame.Web.Models.2023'
+    projects: '**/*.csproj'
 
 - task: DotNetCoreCLI@2
   displayName: 'Build the project - $(buildConfiguration)'
