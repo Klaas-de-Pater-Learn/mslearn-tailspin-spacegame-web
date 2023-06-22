@@ -37,6 +37,7 @@ steps:
     feedsToUse: select
     feedRestore: '$(System.TeamProject)/Tailspin.SpaceGame.Web.Models.2023'
     projects: '**/*.csproj'
+    includeNuGetOrg: true
 
 - task: DotNetCoreCLI@2
   displayName: 'Build the project - $(buildConfiguration)'
