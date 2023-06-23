@@ -2,7 +2,7 @@ trigger:
 - '*'
 
 pool:
-  vmImage: 'ubuntu-20.04'
+  name: 'az400UbuntuLatest-pool'
   demands:
   - npm
 
